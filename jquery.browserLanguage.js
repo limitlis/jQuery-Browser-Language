@@ -21,13 +21,15 @@
 (function($){
 
    $.browserLanguage = function(callback){
-     var language;
+     var language,
+         lang_code;
      $.ajax({
          url: "http://ajaxhttpheaders.appspot.com",
          dataType: 'jsonp',
          success: function(headers) {
              language = headers['Accept-Language'].substring(0,2);
-             callback(languageLookup[language], headers['Accept-Language']);
+             lang_code = headers['Accept-Language'].split(",",1);
+             callback(lang_code, languageLookup[language], headers['Accept-Language']);
          }
      });
    }
