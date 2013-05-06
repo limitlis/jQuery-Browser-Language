@@ -28,7 +28,7 @@
          dataType: 'jsonp',
          success: function(headers) {
              language = headers['Accept-Language'].substring(0,2);
-             lang_code = headers['Accept-Language'].split(",",1);
+             lang_code = headers['Accept-Language'].split(",",1)[0];
              callback(lang_code, languageLookup[language], headers['Accept-Language']);
          }
      });
